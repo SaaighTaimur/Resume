@@ -26,7 +26,7 @@ hr {
     margin-bottom: 5%;
 }
 
-/* Hide Streamlit default elements
+/* Hide Streamlit default elements*/
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
-header {visibility: hidden;} */
+header {visibility: hidden;} 
