@@ -116,6 +116,8 @@ for index, (platform, link) in enumerate(social_media_platforms.items()):
 
 ### Skills
 
+st.write("\n\n\n")
+
 # Create a subheader for skills
 st.subheader("Skills")
 # Add a divider
