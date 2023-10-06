@@ -53,7 +53,7 @@ with open(css_file) as css:
 with open(resume_file, "rb") as resume_file:
     PDFbyte = resume_file.read()
 
-profile_picture = Image.open(profile_picture)
+profile_picture = Image.open(profile_pic)
 
 
 ### Introduction
