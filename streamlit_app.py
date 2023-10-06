@@ -1,26 +1,42 @@
-from pathlib import Path
+# Import streamlit module
 import streamlit as st
+
+# Import pathlib for file navigation
+from pathlib import Path
+
+# Import Image to add profile picture later one
 from PIL import Image
 
 ### FILE NAVIGATION
+
+# This line obtains the path of the current file
 directory = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+
+# Find the file path for the css file, resume file, and profile picture
 css_file = directory / "styles" / "main.css"
 resume_file = directory / "assets" / "resume.pdf"
 profile_pic = directory / "assets" / "profile_pic.png"
 
 ### PAGE INFORMATION
+
+# Give the app a title and an icon 
 PAGE_TITLE = "Resume - Saaigh Taimur"
 PAGE_ICON = ":page_with_curl"
+
+# Store my name in a variable
 name = "Saaigh Taimur"
 
+# Store a short description + contact info in variables
 description = " Grade 12 student currently studying at Delview Secondary School in North Delta, BC."
 email_address = "saaightaimur@gmail.com"
 
+# Store social media names + links in a dictionary
 social_media_platforms = {
     "LinkedIn" : "https://www.linkedin.com/in/saaigh-taimur-714085255/",
     "GitHub" : "https://github.com/SaaighTaimur"
     }
 
+# Store certifications + links in a dictionary
 certifications = {
     "Learn SQL Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/042a4e5884e3eb6ea1f2a12be6abb851",
     "EmpowerTech Hackathon Participation Certificate" : "https://drive.google.com/file/d/1rntfkXTdMUFbj4bs3rtYTupjoIlX3icl/view?pli=1",
@@ -30,12 +46,14 @@ certifications = {
     "Learn the Basics of Regular Expressions Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/9da8e26980d5139405439ee7578b8b69"
 }
 
+# Store languages + proficiency levels in a dictionary
 languages = {
     "🇨🇦 English" : "Native/Bilingual Proficency",
     "🇵🇰 Urdu" : "Native/Bilingual Proficiency",
     "🇫🇷 French" : "Elementary Proficiency"
 }
 
+# Store achievements and awards in a list
 achievements = ["Delview Senior Social Studies Award - *2023*",
                 "Delview Senior InfoTech Award - *2022*",
                 "Delview Junior Math Award - *2022*",
@@ -43,49 +61,72 @@ achievements = ["Delview Senior Social Studies Award - *2023*",
                 "Delview Academic Honour Roll - *2020, 2021, 2022, 2023*"]
 
 
+# Set the page title and icon to the variables defined earlier
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
 
 ### Load resources
+
+# Open the css_file (which was not written by me, I used an online version to remove default streamlit elements and customize links)
 with open(css_file) as css:
     st.markdown("<style>{}</style>".format(css.read()), unsafe_allow_html=True)
 
+# Open and read the resume file
 with open(resume_file, "rb") as resume_file:
     PDFbyte = resume_file.read()
 
+# Open the profile picture file
 profile_pic = Image.open(profile_pic)
 
 
 ### Introduction
+
+# Create two columns (one will have my image, and the other will store my description)
 col1, col2 = st.columns(2, gap="small")
 
-# Profile Picture
+# Add my profile picture to the first column
 with col1:
     st.image(profile_pic, width=230)
 
-# Short description
+# Add my name and short description to the second column
 with col2:
     st.title(name)
     st.write(description)
+    # Create a button that allows the user to download the PDF version of my resume
     st.download_button(
         label = "⬇️ Download PDF Version",
         data=PDFbyte,
         file_name=resume_file.name,
         mime="application/octet-stream"
     )
+    # Add my email address
     st.write(f"✉️ {email_address}")
 
+
 ### Social Media
+
+# Add empty space
 st.write("#")
-cols = st.columns(len(social_media_platforms)+3)
+
+# Create 5 columns (so that my two social media links will appear nicely to the left, underneath the profile picture)
+cols = st.columns(5)
+
+# Loop through social_media_platforms.items() using enumerate to obtain each index, platform name, and platform link
 for index, (platform, link) in enumerate(social_media_platforms.items()):
+    # For every index found, print its platform name, and embed it with its associated link
     cols[index].write(f"[{platform}]({link})")
 
 
-
 ### Skills
+
+# Add empty space
 st.write("#")
+# Create a subheader for skills
 st.subheader("Skills")
+# Add a divider
+st.write("---")
+
+# Print skills using st.write()
 st.write(
     """
 - 💻 Proficient in Python
@@ -99,11 +140,15 @@ st.write(
 
 
 ### Work Experience
+
+# Insert new line
 st.write('\n')
+# Create a subheader for work experience
 st.subheader("Work Experience")
+# Add a divider
 st.write("---")
 
-
+# Print my work experience at Canuel Caterers
 st.write("🍔", "**Cafeteria Employee | Canuel Caterers**")
 st.write("Sept 2022 - June 2023")
 st.write(
@@ -185,23 +230,46 @@ st.write(
 
 
 ### Achievements/Awards
+
+# Insert new line
 st.write("\n")
+# Create a subheader for achievements
 st.subheader("Achievements")
+# Add a divider
+st.write("---")
 
 
+# For every item in the achievements list, print it our seperately, each with a medal emoji
 for achievement in achievements:
-    st.write(f"🥇 {achievement}")
+    st.write(f"- 🥇 {achievement}")
 
 
 ### Certifications
+
+# Insert empty space
 st.write("#")
+# Create a subheader for certifications
 st.subheader("Certifications")
+# Add a divider
+st.write("---")
+
+
+# For every item in the certifications list, print it our seperately, each with a trophy emoji
 for certification, link in certifications.items():
+    # Embed a link to each certification
     st.write(f"- 🏆 [{certification}]({link})")
 
 
-### languages
+### Languages
+
+# Insert empty space
 st.write("#")
+# 
 st.subheader("Languages")
+# Add a divider
+st.write("---")
+
+
+# For every item in the languages list, print it out seperately (they already have the flag emojis, which show on Firefox but not on Chrome, for some reason)
 for language, proficiency in languages.items():
     st.write(f"- {language} - {proficiency}")
