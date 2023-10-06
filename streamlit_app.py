@@ -127,7 +127,7 @@ st.write("---")
 st.write(
     """
 - 💻 Proficient in Python
-- 🧑‍💻 Basic knowledge of SQL
+- 👩‍💻 Basic knowledge of SQL
 - ➕ Math and numeracy skills
 - 🏠 Proficient in using 3D design software (Onshape)
 - 📊 Grasp of MS Office software (Excel, Word, PowerPoint, etc.)
