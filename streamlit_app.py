@@ -105,9 +105,6 @@ with col2:
 
 ### Social Media
 
-# Add empty space
-st.write("#")
-
 # Create 5 columns (so that my two social media links will appear nicely to the left, underneath the profile picture)
 cols = st.columns(5)
 
@@ -119,8 +116,6 @@ for index, (platform, link) in enumerate(social_media_platforms.items()):
 
 ### Skills
 
-# Add empty space
-st.write("#")
 # Create a subheader for skills
 st.subheader("Skills")
 # Add a divider
@@ -246,8 +241,6 @@ for achievement in achievements:
 
 ### Certifications
 
-# Insert empty space
-st.write("#")
 # Create a subheader for certifications
 st.subheader("Certifications")
 # Add a divider
@@ -262,9 +255,7 @@ for certification, link in certifications.items():
 
 ### Languages
 
-# Insert empty space
-st.write("#")
-# 
+# Insert a subheader for languages
 st.subheader("Languages")
 # Add a divider
 st.write("---")
