@@ -3,41 +3,45 @@ import streamlit as st
 from PIL import Image
 
 ### FILE NAVIGATION
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-css_file = current_dir / "styles" / "main.css"
-resume_file = current_dir / "assets" / "resume.pdf"
-profile_pic = current_dir / "assets" / "profile_pic.png"
+directory = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+css_file = directory / "styles" / "main.css"
+resume_file = directory / "assets" / "resume.pdf"
+profile_picture = directory / "assets" / "profile_picture.png"
 
 ### PAGE INFORMATION
 PAGE_TITLE = "Resume - Saaigh Taimur"
 PAGE_ICON = ":page_with_curl"
-NAME = "Saaigh Taimur"
+name = "Saaigh Taimur"
 
-DESCRIPTION = " Grade 12 student currently studying at Delview Secondary School in North Delta, BC."
+description = " Grade 12 student currently studying at Delview Secondary School in North Delta, BC."
+email_address = "saaightaimur@gmail.com"
 
-EMAIL = "saaightaimur@gmail.com"
-
-SOCIAL_MEDIA = {
+social_media_platforms = {
     "LinkedIn" : "https://www.linkedin.com/in/saaigh-taimur-714085255/",
     "GitHub" : "https://github.com/SaaighTaimur"
     }
 
-CERTIFICATIONS = {
+certifications = {
     "Learn SQL Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/042a4e5884e3eb6ea1f2a12be6abb851",
     "EmpowerTech Hackathon Participation Certificate" : "https://drive.google.com/file/d/1rntfkXTdMUFbj4bs3rtYTupjoIlX3icl/view?pli=1",
     "Principles of Data Literacy Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/f1d31ad7364642358a28708a173ba0c2",
     "Learn Python 3 Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/6c152bd262967f8c941c9707ed636bda",
     "Learn Web Scraping with Beautiful Soup Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/f4cba58fa21e556a6a8f5a975cef5388",
     "Learn the Basics of Regular Expressions Course" : "https://www.codecademy.com/profiles/Saaigh/certificates/9da8e26980d5139405439ee7578b8b69"
-
 }
 
-
-LANGUAGES = {
+languages = {
     "🇨🇦 English" : "Native/Bilingual Proficency",
     "🇵🇰 Urdu" : "Native/Bilingual Proficiency",
     "🇫🇷 French" : "Elementary Proficiency"
 }
+
+achievements = ["Delview Senior Social Studies Award - *2023*",
+                "Delview Senior InfoTech Award - *2022*",
+                "Delview Junior Math Award - *2022*",
+                "Delview Junior Language Arts Award - *2022*",
+                "Delview Academic Honour Roll - *2020, 2021, 2022, 2023*"]
+
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
@@ -49,8 +53,7 @@ with open(css_file) as css:
 with open(resume_file, "rb") as resume_file:
     PDFbyte = resume_file.read()
 
-profile_pic = Image.open(profile_pic)
-
+profile_picture = Image.open(profile_picture)
 
 
 ### Introduction
@@ -58,24 +61,24 @@ col1, col2 = st.columns(2, gap="small")
 
 # Profile Picture
 with col1:
-    st.image(profile_pic, width=230)
+    st.image(profile_picture, width=230)
 
 # Short description
 with col2:
-    st.title(NAME)
-    st.write(DESCRIPTION)
+    st.title(name)
+    st.write(description)
     st.download_button(
         label = "⬇️ Download PDF Version",
         data=PDFbyte,
         file_name=resume_file.name,
         mime="application/octet-stream"
     )
-    st.write(f"✉️ {EMAIL}")
+    st.write(f"✉️ {email_address}")
 
 ### Social Media
 st.write("#")
-cols = st.columns(len(SOCIAL_MEDIA)+3)
-for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
+cols = st.columns(len(social_media_platforms)+3)
+for index, (platform, link) in enumerate(social_media_platforms.items()):
     cols[index].write(f"[{platform}]({link})")
 
 
@@ -185,26 +188,20 @@ st.write(
 st.write("\n")
 st.subheader("Achievements")
 
-st.write(
-    """
-- 🥇 Delview Senior Social Studies Award - *2023*
-- 🥇 Delview Senior InfoTech Award - *2022*
-- 🥇 Delview Junior Math Award - *2022*
-- 🥇 Delview Junior Language Arts Award - *2022*
-- 🥇 Delview Academic Honour Roll - *2020, 2021, 2022, 2023*
 
-"""
-)
+for achievement in achievements:
+    st.write(f"🥇 {achievement}")
+
 
 ### Certifications
 st.write("#")
-st.subheader("Certifications")
-for certification, link in CERTIFICATIONS.items():
+st.subheader("certifications")
+for certification, link in certifications.items():
     st.write(f"- 🏆 [{certification}]({link})")
 
 
-### Languages
+### languages
 st.write("#")
-st.subheader("Languages")
-for language, proficiency in LANGUAGES.items():
+st.subheader("languages")
+for language, proficiency in languages.items():
     st.write(f"- {language} - {proficiency}")
