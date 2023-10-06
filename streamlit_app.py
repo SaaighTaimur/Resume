@@ -213,7 +213,7 @@ st.write(
 
 # Air Cadets
 st.write("\n")
-st.write("🪖", "**Fundraising Volunteer | Royal Canadian Air Cadets Squadron 819**")
+st.write("✈️", "**Fundraising Volunteer | Royal Canadian Air Cadets Squadron 819**")
 st.write("Sept 2019 - Sept 2022")
 st.write(
     """
