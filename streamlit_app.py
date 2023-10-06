@@ -170,6 +170,7 @@ st.write(
     """
 - ➡️ Handed out flyers for the event to customers at a local grocery store.
 - ➡️ Collected canned-food and non-perishable item donations.
+- ➡️ Sold t-shirts and buttons for fundraising at school
 
 """
 )
