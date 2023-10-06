@@ -195,13 +195,13 @@ for achievement in achievements:
 
 ### Certifications
 st.write("#")
-st.subheader("certifications")
+st.subheader("Certifications")
 for certification, link in certifications.items():
     st.write(f"- 🏆 [{certification}]({link})")
 
 
 ### languages
 st.write("#")
-st.subheader("languages")
+st.subheader("Languages")
 for language, proficiency in languages.items():
     st.write(f"- {language} - {proficiency}")
