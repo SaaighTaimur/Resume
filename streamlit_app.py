@@ -6,7 +6,7 @@ from PIL import Image
 directory = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = directory / "styles" / "main.css"
 resume_file = directory / "assets" / "resume.pdf"
-profile_picture = directory / "assets" / "profile_pic.png"
+profile_pic = directory / "assets" / "profile_pic.png"
 
 ### PAGE INFORMATION
 PAGE_TITLE = "Resume - Saaigh Taimur"
@@ -53,7 +53,7 @@ with open(css_file) as css:
 with open(resume_file, "rb") as resume_file:
     PDFbyte = resume_file.read()
 
-profile_picture = Image.open(profile_pic)
+profile_pic = Image.open(profile_pic)
 
 
 ### Introduction
@@ -61,7 +61,7 @@ col1, col2 = st.columns(2, gap="small")
 
 # Profile Picture
 with col1:
-    st.image(profile_picture, width=230)
+    st.image(profile_pic, width=230)
 
 # Short description
 with col2:
